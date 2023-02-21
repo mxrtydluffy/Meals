@@ -3,9 +3,15 @@ import { Link } from 'react-router-dom';
 
 const Error = () => {
   return (
-    <div>
+    <section className='error-page section'>
+        <div className='error-container'>
+            <h1>Sorry! This page doesn't exist.</h1>
+            <Link to='/' className='btn btn-primary'>
+                Home
+            </Link>
+        </div>
       <h2>error page</h2>
-    </div>
+    </section>
   );
 }
 
