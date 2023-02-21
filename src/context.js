@@ -6,7 +6,25 @@ const url = 'https://www.themealdb.com/api/json/v1/1/search.php?s='
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
-  return <AppContext.Provider value='hello'>{children}</AppContext.Provider>
+    {/* Fetching different Meals */}
+    const [loading, setLoading] = useState(true);
+    {/* Want to display meals when the page loads. 'A' meals will be shown */}
+    const [searchTerm, setSearchTerm] = useState('a');
+    const [meals, setMeals] = useState([])
+
+
+  return (
+    <AppContext.Provider 
+        value={{
+            loading,
+            meals,
+            setSearchTerm, 
+        }}
+    >
+        {children}
+    </AppContext.Provider>
+  )
+    
 }
 // make sure use
 export const useGlobalContext = () => {
