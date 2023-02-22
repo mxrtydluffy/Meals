@@ -54,13 +54,13 @@ const SingleMeal = () => {
               instructions, 
               category,
               area,
+              ingredients,
             }
             setMeal(newMeal);
         } else {
           setMeal(null);
         }
         setLoading(false);
-        console.log(data);
       } catch (error) {
         console.log(error);
         setLoading(false);
@@ -82,6 +82,7 @@ const SingleMeal = () => {
     instructions,
     category,
     area,
+    ingredients,
   } = meal;
   /* Go back and recheck this part */
   return (
