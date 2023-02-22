@@ -13,7 +13,7 @@ const MealList = () => {
     if(meals.length < 1) {
         return (
             <h2 className='section-title'>
-                No meals matched your current input.
+                No meals matched your current input
             </h2>
         )
     }

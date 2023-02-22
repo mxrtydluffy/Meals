@@ -13,7 +13,7 @@ const AppProvider = ({ children }) => {
     const [meals, setMeals] = useState([])
 
 
-    const fetchMeals = async () => {
+    const fetchMeals = useCallback(async () => {
       {/* Everytime to fetch, it would load since using multiple times not default. */}
       setLoading(true)
       try {
@@ -28,7 +28,7 @@ const AppProvider = ({ children }) => {
               strMeal,
               strMealThumb,
               strTags,
-              strYoutube
+              strYoutube,
             } = item
             return {
               id:idMeal,
@@ -49,11 +49,13 @@ const AppProvider = ({ children }) => {
         console.log(error)
         setLoading(false)
       }
-    }
+      // Want to setup if search term changes the deafauly value 'a' will change.
+      // Avoiding infinite loop
+    },[searchTerm])
     {/* Return object as an array */}
     useEffect(() => {
       fetchMeals()
-    }, [searchTerm])
+    }, [searchTerm, fetchMeals])
 
 
   return (
