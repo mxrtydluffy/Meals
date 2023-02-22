@@ -13,6 +13,49 @@ const AppProvider = ({ children }) => {
     const [meals, setMeals] = useState([])
 
 
+    const fetchMeals = async () => {
+      {/* Everytime to fetch, it would load since using multiple times not default. */}
+      setLoading(true)
+      try {
+        {/* Getting the URl and then fetch the 'a' in the end. */}
+        const response = await fetch(`${url}${searchTerm}`)
+        const data = await response.json()
+        const { meals } = data
+        if (meals) {
+          const newMeals = meals.map((item) => {
+            const {
+              idMeal,
+              strMeal,
+              strMealThumb,
+              strTags,
+              strYoutube
+            } = item
+            return {
+              id:idMeal,
+              name:strMeal,
+              image:strMealThumb,
+              info:strTags,
+              video: strYoutube,
+            }
+          })
+          setMeals(newMeals)
+
+        {/* Happens if Meals are null | By deafult it's an empty array */}  
+        } else {
+          setMeals([])
+        }
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+      }
+    }
+    {/* Return object as an array */}
+    useEffect(() => {
+      fetchMeals()
+    }, [searchTerm])
+
+
   return (
     <AppContext.Provider 
         value={{

@@ -7,8 +7,8 @@ const MealList = () => {
     const { meals, loading } = useGlobalContext();
 
     {/* True by default */}
-    if (Loading) {
-        return <Loading />
+    if (loading) {
+      return <Loading />
     }
     if(meals.length < 1) {
         return (
@@ -19,9 +19,16 @@ const MealList = () => {
     }
 
   return (
-    <div>
-      <h2>Meal list information</h2>
-    </div>
+    <section className='section'>
+      <h2 className='section-title'>
+        Meals
+      </h2>
+      <div className='meals-center'>
+        {meals.map((item)=>{
+          return <Meal key={item.id} {...item}/>
+        })}
+      </div>
+    </section>
   );
 }
 
