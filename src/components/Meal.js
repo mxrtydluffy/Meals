@@ -11,7 +11,9 @@ const Meal = ({image, name, id, info, youtube}) => {
         <h3>{name}</h3>
         <h4>{youtube}</h4>
         <p>{info}</p>
-        <Link to={`/meal/${id}`} className = "btn btn-primary btn-details"></Link>
+        <Link to={`/meal/${id}`} className = "btn btn-primary btn-details">
+          Details
+        </Link>
       </div>
     </article>
   )

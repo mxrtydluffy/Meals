@@ -78,7 +78,7 @@ const SingleMeal = () => {
   const {
     name,
     image,
-    info,
+    info, // Some recipes have some don't
     instructions,
     category,
     area,
@@ -92,9 +92,9 @@ const SingleMeal = () => {
       </Link>
       <h2 className='section-title'>{name}</h2>
       {/* Main body with categories */}
-      <div className='meal'>
+      <div className='meals'>
         <img src={image} alt={name}/>
-        <div className='meal-info'>
+        <div className='meals-info'>
           <p>
             <span className='meal-data'>Name :</span>
             {name}
@@ -104,23 +104,20 @@ const SingleMeal = () => {
             {category}
           </p>
           <p>
-            <span className='meal-data'>Info :</span>
-            {info}
-          </p>
-          <p>
             <span className='meal-data'>Area :</span>
             {area}
+          </p>
+          {/* Ingredients */}
+          <p>
+          <span className='meal-data'>Ingredients :</span>
+          {ingredients.map((item,index) => {
+            return item? <span key={index}>{item}</span> : null
+          })}
           </p>
           <p>
             <span className='meal-data'>Instructions :</span>
             {instructions}
           </p>
-          {/* Ingredients */}
-          <span className='meal-data'>Ingredients :</span>
-          {ingredients.map((item,index) => {
-            return item? <span key={index}>{item}</span> : null
-          })}
-
         </div>
       </div>
     </section>

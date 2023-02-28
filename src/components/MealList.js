@@ -21,7 +21,7 @@ const MealList = () => {
   return (
     <section className='section'>
       <h2 className='section-title'>
-        Meals
+        List of Meals
       </h2>
       <div className='meals-center'>
         {meals.map((item)=>{
